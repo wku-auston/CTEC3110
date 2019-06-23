@@ -19,3 +19,6 @@ Access the following URLs on the browser
 ```$xslt
 http://localhost:8000/
 ```
+
+# Lab01 Persons
+To refactor the same way as that for Pets
