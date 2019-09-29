@@ -1,17 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: slim
- * Date: 13/10/17
- * Time: 10:41
- */
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use \Psr\Http\Message\ResponseInterface as Response;
+use \Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->post(
-  '/performcalculation',
-  function (Request $request, Response $response) use ($app) {
+$app->post('/performcalculation', function (Request $request, Response $response) {
 
     $file_path = __DIR__ . DIRSEP . '../src/';
     require $file_path . 'calculateValidate.php';
@@ -29,15 +21,14 @@ $app->post(
 
     $f_calculation_result = do_calculation($f_validated_value_1, $f_validated_value_2, $f_validated_calculation_type);
 
-    return $this->view->render(
-      $response,
-      'calculation_result.html.twig',
-      [
-        'value_1' => $f_value_1,
-        'value_2' => $f_value_2,
-        'calculation_type' => $f_calculation_type,
-        'calculation_result' => $f_calculation_result,
-      ]
+    return $this->view->render($response, 'calculation_result.html.twig',
+        [
+            'value_1' => $f_value_1,
+            'value_2' => $f_value_2,
+            'calculation_type' => $f_calculation_type,
+            'calculation_result' => $f_calculation_result,
+            'link' => '/calculate_example/'
+        ]
     );
-  }
-);
+}
+)->setName('results');
