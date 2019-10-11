@@ -2,9 +2,9 @@
 
 Open terminal (bottom-right or Alt-F12) and run the following command
 ```$xslt
-composer require slim/slim
+composer require slim/slim ^3
 ```
-This will install the Slim Framework package in your project directory.
+This will install the Slim Framework version 3 package in your project directory.
 
 Create a new PHP file test_slim.php and paste in the following code
 ```$xslt
